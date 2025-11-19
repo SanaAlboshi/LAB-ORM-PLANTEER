@@ -1,0 +1,73 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="plant-detail-container">
+    <div class="container">
+        
+        <!-- Back button -->
+        <a href="{% url 'plants_list' %}" class="back-btn">← Back</a>
+
+        <!-- Main box -->
+        <div class="plant-box">
+            
+            <!-- Image + Info side by side -->
+            <div class="plant-content">
+                
+                <!-- Image -->
+                <div class="plant-img">
+                    {% if plant.image %}
+                        <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+                    {% else %}
+                        <img src="{% static 'images/default_plant.jpg' %}" alt="No Image">
+                    {% endif %}
+                </div>
+
+                <!-- Info -->
+                <div class="plant-text">
+                    <h1>{{ plant.name }}</h1>
+                    
+                    <div class="tags">
+                        <span>{{ plant.get_category_display }}</span>
+                        <span>{% if plant.is_edible %}Edible{% else %}Not Edible{% endif %}</span>
+                    </div>
+
+                    <p>{{ plant.description }}</p>
+
+                    <div class="btns">
+                        <a href="{% url 'plant_edit' plant.pk %}" class="btn-edit">Edit</a>
+                        <a href="{% url 'plant_delete' plant.pk %}" class="btn-del">Delete</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Related Plants -->
+{% if related_plants %}
+<div class="related-section">
+    <div class="container">
+        <h2>Related Plants</h2>
+        <div class="plants-grid">
+            {% for related in related_plants %}
+            <div class="plant-card">
+                {% if related.image %}
+                    <img src="{{ related.image.url }}" alt="{{ related.name }}">
+                {% else %}
+                    <img src="{% static 'images/default_plant.jpg' %}" alt="No Image">
+                {% endif %}
+                <h3>{{ related.name }}</h3>
+                <p>{{ related.description|truncatewords:15 }}</p>
+                <a href="{% url 'plant_detail' related.pk %}" class="read-more-btn">View</a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+<h1>All Plants</h1>
+
+<!-- Filter by category or edibility -->
+<form method="get" class="filter-form">
+    <select name="category">
+        <option value="">All Categories</option>
+       {% for key, value in Plant.CATEGORY_CHOICES %}
+        <option value="{{ key }}" {% if category == key %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}
+    </select>
+
+    <select name="is_edible">
+        <option value="">All</option>
+        <option value="true" {% if is_edible == 'true' %}selected{% endif %}>Edible</option>
+        <option value="false" {% if is_edible == 'false' %}selected{% endif %}>Not Edible</option>
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+
+<div class="plants-grid">
+    {% for plant in plants %}
+    <div class="plant-card">
+        {% if plant.image %}
+        <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+        {% else %}
+        <img src="{% static 'images/default_plant.jpg' %}" alt="No image">
+        {% endif %}
+        <h3>{{ plant.name }}</h3>
+        <p>{{ plant.description|truncatewords:20 }}</p>
+        <a href="{% url 'plant_detail' plant.pk %}" class="read-more-btn">Read More</a>
+    </div>
+    {% empty %}
+    <p>No plants available at the moment.</p>
+    {% endfor %}
+</div>
+{% endblock %}

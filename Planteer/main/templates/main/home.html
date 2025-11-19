@@ -1,0 +1,49 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-text">
+        <h2>Discover Plants That<br>Inspire</h2>
+        <p>Explore the beauty of nature and keep your plants healthy every day</p>
+
+        <!-- Search Bar -->
+        <form method="GET" action="{% url 'plant_search' %}" class="hero-search">
+            <input type="text" name="q" placeholder="Search for your plant..." required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+<!-- Latest Plants Section -->
+<section class="latest-plants">
+    <div class="section-header">
+        <h2> Plants
+            <p>Learn more about plants</p>
+            
+        </h2>
+
+    </div>
+<a href="{% url 'plants_list' %}" class="read-more-btn outside-btn">→ More</a>
+
+
+    <div class="plants-grid">
+        {% for plant in latest_plants %}
+        <div class="plant-card">
+            <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+            <h3>{{ plant.name }}</h3>
+            <p>{{ plant.description|truncatewords:20 }}</p>
+            <a href="{% url 'plant_detail' plant.pk %}" class="read-more-btn">Read More</a>
+        </div>
+        {% empty %}
+        <p>No plants available at the moment.</p>
+        {% endfor %}
+    </div>
+</section>
+
+
+
+
+{% endblock %}

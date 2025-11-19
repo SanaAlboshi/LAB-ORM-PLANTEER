@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Planteer{% endblock %}</title>
+
+<link rel="stylesheet" href="{% static 'main/Css/style.css' %}">
+</head>
+
+<body>
+
+    <!--  Header -->
+    <header class="main-header">
+        <div class="container">
+            <h2 class="logo">Peony</h2>
+
+            <nav class="nav-links">
+                <a href="{% url 'contact' %}">Contact Us</a>
+                <a href="{% url 'plant_add' %}">Add Plant</a>
+                <a href="{% url 'plants_list' %}">All Plants</a>
+                <a href="{% url 'home' %}">Home</a>
+
+            </nav>
+        </div>
+    </header>
+
+
+    
+
+    {% block content %}{% endblock %}
+
+
+
+
+
+    <!-- Footer -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <h3>Planteer</h3>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="/plants/">Plants</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact Us</h4>
+            <p>Email: info@planteer.com</p>
+            <p>Phone: 0045614700</p>
+        </div>
+    </div>
+  
+</footer>
+
+
+</body>
+</html>

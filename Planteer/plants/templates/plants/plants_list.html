@@ -1,0 +1,58 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<h1 style="text-align: left; padding: 90px 50px 20px; font-size: 25px; color: #282828;">
+    All Plants
+</h1>
+
+<!-- Filter + Add New Plant Row -->
+<form method="get" style="display: flex; justify-content: flex-end; gap: 10px; padding: 20px 30px; flex-wrap: wrap; align-items: center;">
+
+    <!-- زر Add New Plant -->
+    
+
+    <!-- فلتر الكاتيجوري -->
+    <select name="category" style="padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; font-size: 13px;">
+        <option value="">All Categories</option>
+        {% for key, value in categories %}
+            <option value="{{ key }}" {% if category == key %}selected{% endif %}>{{ value }}</option>
+        {% endfor %}
+    </select>
+
+    <!-- فلتر الـ Edibility -->
+    <select name="is_edible" style="padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; font-size: 13px;">
+        <option value="">All Plants</option>
+        <option value="true" {% if is_edible == 'true' %}selected{% endif %}>Edible</option>
+        <option value="false" {% if is_edible == 'false' %}selected{% endif %}>Non-Edible</option>
+    </select>
+
+    <!-- زر Filter -->
+    <button type="submit" class="book-btn" style="background: #4a4a4a; padding: 10px 28px; font-size: 13px;">Filter</button>
+</form>
+
+<!-- Plants Grid -->
+<div class="plants-grid" style="padding: 20px;">
+    {% for plant in plants %}
+    <div class="plant-card">
+        {% if plant.image %}
+            <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+        {% else %}
+            <img src="{% static 'images/default_plant.jpg' %}" alt="No image">
+        {% endif %}
+
+        <h3>{{ plant.name }}</h3>
+        <p>{{ plant.description|truncatewords:20 }}</p>
+
+        <div class="plant-actions">
+            <a href="{% url 'plant_edit' plant.pk %}" class="edit-btn">Edit</a>
+            <a href="{% url 'plant_delete' plant.pk %}" class="delete-btn">Delete</a>
+            <a href="{% url 'plant_detail' plant.pk %}" class="read-more-btn">Read More</a>
+        </div>
+    </div>
+    {% empty %}
+    <p style="text-align:center; padding: 40px; font-size: 16px; color: #777; grid-column: 1/-1;">No plants available.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

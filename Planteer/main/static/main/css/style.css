@@ -1,0 +1,964 @@
+/* =========================
+   إعدادات عامة
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    line-height: 1.6;
+    color: #333;
+    direction: rtl;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================
+   الهيدر والقائمة
+========================= */
+.main-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 30px 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.589) 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.main-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 90%;
+}
+
+.logo {
+    position: absolute;
+    left: 0;
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 3px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 90px;
+    justify-content: center;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: opacity 0.3s;
+}
+
+.nav-links a:hover {
+    opacity: 0.7;
+}
+
+/* =========================
+   قسم Hero
+========================= */
+.hero-section {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),
+                url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=1600') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    padding-right: 700px;
+    position: relative;
+}
+
+.hero-text {
+    max-width: 650px;
+    color: #fff;
+    text-align: left;
+}
+
+.hero-text h2 {
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    margin-top: 200px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.hero-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+    opacity: 0.95;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+
+.hero-search {
+    display: flex;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.hero-search input {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    font-size: 15px;
+    outline: none;
+    background: transparent;
+    text-align: right;
+}
+
+.hero-search button {
+    padding: 16px 35px;
+    background: #5a7c5a;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.hero-search button:hover {
+    background: #4a6a4a;
+}
+
+/* =========================
+   عناوين الأقسام
+========================= */
+.section-header h2 {
+    font-size: 30px;
+    text-align: left;
+    color: #343434;
+    margin-left: 20px;
+    margin-top: 40px;
+}
+
+.section-header p {
+    font-size: 20px;
+    text-align: left;
+    color: #7a7a7a;
+}
+
+.outside-btn {
+    position: relative; 
+    top: -30px;
+    left: 10px;
+    padding: 8px 16px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    background: none;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* =========================
+   الفلاتر السفلية
+========================= */
+.filter-form-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #ff4444;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    background: #ff6666;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-icon {
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.filter-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-info h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.filter-select {
+    padding: 6px 10px;
+    border: 1px solid #cc0000;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 13px;
+    color: #333;
+}
+
+.filter-select:hover {
+    border-color: #990000;
+    background: #ffe6e6;
+}
+
+.filter-select:focus {
+    outline: none;
+    border-color: #990000;
+    box-shadow: 0 0 5px rgba(255, 68, 68, 0.5);
+}
+
+.filter-options {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.filter-dot {
+    padding: 4px 12px;
+    background: #fff;
+    color: #ff4444;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s;
+    user-select: none;
+    font-weight: 600;
+}
+
+.filter-dot:hover {
+    background: #ffe6e6;
+    transform: scale(1.05);
+}
+
+.filter-dot.active {
+    background: #cc0000;
+    color: #fff;
+}
+
+/* =========================
+   الأزرار
+========================= */
+.book-btn {
+    background: #4a4a4a !important;
+    color: #fff;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+    transition: background 0.3s;
+    position: relative;
+    z-index: 1000;
+}
+
+.book-btn:hover {
+    background: #aaaaaa !important;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   شبكة النباتات
+========================= */
+.plants-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    justify-content: center;
+    gap: 100px;
+    margin-top: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.plant-card {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    text-align: left;
+}
+
+.plant-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    object-position: 20% top;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.plant-card img:hover {
+    transform: scale(1.05);
+}
+
+.plant-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 4px;
+}
+
+.plant-card p {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 3px;
+    line-height: 1.4;
+}
+
+.plant-card .category {
+    font-size: 13px;
+    font-weight: 600;
+    color: #000;
+}
+
+.plant-card .plant-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.plant-card .read-more-btn {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    padding: 6px 14px;
+    background: #000;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.edit-btn {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    padding: 6px 14px;
+    background: #4d4d4d;
+    color: #fff !important;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.edit-btn:hover {
+    background: #4a6a4a;
+}
+
+.delete-btn {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    padding: 6px 14px;
+    background: #4d4d4d;
+    color: #fff !important;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.delete-btn:hover {
+    background: #b2716a;
+}
+
+.plant-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* =========================
+   صفحة تفاصيل النبات
+========================= */
+.plant-detail-container {
+    padding: 40px 15px;
+    background: #f9f9f9;
+    font-family: 'Arial', sans-serif;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #5a7c5a;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.plant-box {
+    background: #fff;
+    border-radius: 15px;
+    padding: 20px 25px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    max-width: 850px;
+    margin: 30px auto 0;
+}
+
+.plant-content {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+}
+
+.plant-text {
+    flex: 1;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 50px;
+}
+
+.plant-text h1 {
+    font-size: 28px;
+    color: #2d4a2d;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.tags span {
+    background: #f0f4f0;
+    color: #5a7c5a;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+.plant-text p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    word-break: break-word;
+}
+
+.btns {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 130px;
+}
+
+.btn-edit,
+.btn-del {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.btn-edit {
+    background: #5a7c5a;
+}
+
+.btn-edit:hover {
+    background: #4a6a4a;
+    transform: translateY(-2px);
+}
+
+.btn-del {
+    background: #e74c3c;
+}
+
+.btn-del:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+
+.plant-img {
+    max-width: 350px;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.plant-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    border-radius: 15px;
+    transition: all 0.4s ease;
+}
+
+.plant-img img:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 15px 40px rgba(90,124,90,0.3));
+}
+
+/* =========================
+   نموذج إضافة/تعديل النبات
+========================= */
+.plant-form-container {
+    max-width: 650px;
+    margin: 130px auto 60px;
+    background: #fff;
+    padding: 35px 40px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.plant-form-container h1 {
+    text-align: center;
+    font-size: 28px;
+    color: #2d4a2d;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.form-field {
+    margin-bottom: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-field label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #444;
+    text-align: left;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.2s;
+    text-align: left;
+    direction: ltr;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+    border-color: #5a7c5a;
+}
+
+.plant-form-container .book-btn {
+    width: 100%;
+    background: #5a7c5a;
+    color: #fff;
+    padding: 12px 0;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.plant-form-container .book-btn:hover {
+    background: #4a6a4a;
+}
+
+.back-link {
+    display: block;
+    margin-top: 18px;
+    text-align: center;
+    color: #5a7c5a;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    color: #3d5e3d;
+}
+
+/* =========================
+   صفحة اتصل بنا
+========================= */
+.contact-container {
+    max-width: 650px;
+    margin: 130px auto 60px;
+    background: #fff;
+    padding: 35px 40px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    text-align: left;
+}
+
+.contact-title {
+    text-align: center;
+    font-size: 28px;
+    color: #2d4a2d;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #444;
+    font-weight: 500;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-bottom: 18px;
+    transition: 0.2s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #5a7c5a;
+}
+
+.send-btn {
+    width: 100%;
+    background: #5a7c5a;
+    padding: 12px 0;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.send-btn:hover {
+    background: #4a6a4a;
+}
+
+/* =========================
+   صفحة الرسائل
+========================= */
+.messages-container {
+    max-width: 850px;
+    margin: 140px auto 60px;
+    padding: 0 20px;
+}
+
+.message-card {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.07);
+    margin-bottom: 25px;
+}
+
+.message-card h3 {
+    font-size: 18px;
+    color: #2d4a2d;
+    margin-bottom: 10px;
+}
+
+.msg-text {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.msg-time {
+    font-size: 12px;
+    color: #888;
+}
+
+.empty {
+    text-align: center;
+    margin-top: 50px;
+    color: #888;
+    font-size: 15px;
+}
+
+/* =========================
+   صفحة النجاح
+========================= */
+.success-box {
+    max-width: 600px;
+    margin: 160px auto;
+    background: #fff;
+    padding: 40px 45px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.success-box h1 {
+    font-size: 26px;
+    color: #2d4a2d;
+    margin-bottom: 20px;
+}
+
+.back-home {
+    display: inline-block;
+    background: #5a7c5a;
+    padding: 12px 30px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.back-home:hover {
+    background: #4a6a4a;
+}
+
+/* =========================
+   صفحة حذف النبات
+========================= */
+.delete-plant-container {
+    max-width: 600px;
+    margin: 150px auto;
+    padding: 0 20px;
+}
+
+.delete-box {
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.delete-box h2 {
+    font-size: 26px;
+    color: #e74c3c;
+    margin-bottom: 20px;
+}
+
+.delete-box p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.delete-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-cancel {
+    padding: 12px 30px;
+    background: #aaa;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-cancel:hover {
+    background: #888;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   الفوتر
+========================= */
+
+.site-footer {
+    background: #fff;             
+    color: #000;                   
+    padding: 20px 1px 2px;        /* مسافة حول المحتوى */
+    font-size: 14px;
+    border-top: 1px solid #444;     /* خط فوق الفوتر */
+    
+}
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 400px;                      /* مسافة بين الأعمدة */
+}
+
+.footer-about {
+    text-align: right;  
+    order: 2;           
+    flex: 1;
+}
+
+.footer-links {
+    text-align: center;
+    order: 1;           
+    flex: 1;
+     margin: 15px 0;
+}
+
+.footer-contact {
+    text-align: left;   
+    order: 0;           
+    flex: 1;
+    
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links ul li {
+    margin: 20px 0;       /* مسافة بين كل رابط */
+}
+
+.footer-links ul li a {
+    color: #000;         
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #333;         
+}
+
+.footer-bottom {
+    text-align: left;
+    margin-top: 40px;      /* مسافة من المحتوى الأساسي */
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    font-size: 13px;
+    color: #555;
+}
+
+
+
+/* =========================
+   Responsive Design
+========================= */
+@media (max-width: 992px) {
+    .plant-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .plant-img {
+        width: 100%;
+        max-height: 300px;
+        margin: 0 auto;
+    }
+
+    .plant-text {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 0 30px;
+    }
+
+    .hero-text h2 {
+        font-size: 36px;
+    }
+
+    .filter-form-container {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .filter-item {
+        width: 100%;
+        border: none !important;
+        padding: 10px 0;
+    }
+
+    .plants-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .plant-detail-container {
+        padding: 30px 10px;
+    }
+
+    .plant-text h1 {
+        font-size: 24px;
+    }
+
+    .plant-text p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 600px) {
+    .plants-grid {
+        gap: 35px;
+    }
+
+    .plant-card img {
+        height: 160px;
+    }
+}

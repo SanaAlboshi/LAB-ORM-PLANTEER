@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+{% block content %}
+<body class="plant-form-page">
+    <div class="plant-form-container">
+        <h1>
+            {% if form.instance.pk %}
+                Edit Plant
+            {% else %}
+                Add Plant
+            {% endif %}
+        </h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-field">
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <span style="color:red; font-size:12px;">{{ field.errors }}</span>
+                {% endif %}
+            </div>
+            {% endfor %}
+            <button type="submit" class="book-btn">Save</button>
+        </form>
+
+        <a href="{% url 'plants_list' %}" class="back-link">Back to Plant List</a>
+    </div>
+</body>
+{% endblock %}

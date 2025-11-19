@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>Search Results for "{{ query }}"</h2>
+
+<div class="plants-grid">
+    {% for plant in results %}
+    <div class="plant-card">
+        {% if plant.image %}
+            <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
+        {% else %}
+            <img src="{% static 'images/default_plant.jpg' %}" alt="No Image">
+        {% endif %}
+        <h3>{{ plant.name }}</h3>
+        <p>{{ plant.description|truncatewords:20 }}</p>
+        <a href="{% url 'plant_detail' plant.pk %}" class="read-more-btn">Read More</a>
+    </div>
+    {% empty %}
+    <p>No plants match your search.</p>
+    {% endfor %}
+</div>
+{% endblock %}
