@@ -6,13 +6,8 @@
     All Plants
 </h1>
 
-
-
 <!-- Filter + Add New Plant Row -->
-<form method="get" style="display: flex; justify-content: flex-end; gap: 10px; padding: 20px 30px; flex-wrap: wrap; align-items: center;">
-
-    <!-- زر Add New Plant -->
-    <!-- يمكن إضافة زر هنا إذا أردت -->
+<form method="get" style="display: flex; justify-content: flex-start; gap: 10px; padding: 20px 30px; flex-wrap: wrap; align-items: center;">
 
     <!-- فلتر الكاتيجوري -->
     <select name="category" style="padding: 10px 15px; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; font-size: 13px;">
@@ -45,7 +40,7 @@
 
 <!-- Plants Grid -->
 <div class="plants-grid" style="padding: 20px;">
-    {% for plant in plants %}
+    {% for plant in page_obj %}
     <div class="plant-card">
         {% if plant.image %}
             <img src="{{ plant.image.url }}" alt="{{ plant.name }}">
@@ -56,18 +51,66 @@
         <h3>{{ plant.name }}</h3>
         <p>{{ plant.description|truncatewords:20 }}</p>
 
-         <div class="plant-actions">
-            <!-- أزرار التعديل والحذف تظهر للستاف فقط -->
+        <div class="plant-actions">
             {% if request.user.is_staff %}
                 <a href="{% url 'plant_edit' plant.pk %}" class="edit-btn">Edit</a>
                 <a href="{% url 'plant_delete' plant.pk %}" class="delete-btn">Delete</a>
             {% endif %}
-                <a href="{% url 'plant_detail' plant.pk %}" class="read-more-btn">Read More</a>
+            <a href="{% url 'plant_detail' plant.pk %}" class="read-more-btn">Read More</a>
         </div>
     </div>
     {% empty %}
     <p style="text-align:center; padding: 40px; font-size: 16px; color: #777; grid-column: 1/-1;">No plants available.</p>
     {% endfor %}
 </div>
+
+<!-- Pagination -->
+{% if page_obj.paginator.num_pages > 1 %}
+<div style="padding: 20px 30px; display: flex; justify-content: center;">
+    <div style="display: inline-flex; gap: 5px; background: #f8f8f8; padding: 8px; border-radius: 8px; border: 1px solid #e0e0e0; direction: ltr;">
+        
+        <!-- Previous -->
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}{% if category %}&category={{ category }}{% endif %}{% if is_edible %}&is_edible={{ is_edible }}{% endif %}{% if selected_country %}&country={{ selected_country }}{% endif %}" 
+               style="padding: 8px 16px; background: white; color: #282828; text-decoration: none; border-radius: 5px; font-size: 13px; border: 1px solid #ddd; font-weight: 500;">
+                Back
+            </a>
+        {% else %}
+            <span style="padding: 8px 16px; background: #f0f0f0; color: #ccc; border-radius: 5px; font-size: 13px; font-weight: 500;">
+                Back
+            </span>
+        {% endif %}
+
+        <!-- Page Numbers -->
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <span style="padding: 8px 12px; background: #2d5016; color: white; border-radius: 5px; font-size: 13px; font-weight: 500; min-width: 38px; text-align: center;">
+                    {{ num }}
+                </span>
+            {% elif num == 1 or num == page_obj.paginator.num_pages or num >= page_obj.number|add:'-2' and num <= page_obj.number|add:'2' %}
+                <a href="?page={{ num }}{% if category %}&category={{ category }}{% endif %}{% if is_edible %}&is_edible={{ is_edible }}{% endif %}{% if selected_country %}&country={{ selected_country }}{% endif %}" 
+                   style="padding: 8px 12px; background: white; color: #282828; text-decoration: none; border-radius: 5px; font-size: 13px; border: 1px solid #ddd; min-width: 38px; text-align: center;">
+                    {{ num }}
+                </a>
+            {% elif num == page_obj.number|add:'-3' or num == page_obj.number|add:'3' %}
+                <span style="padding: 8px 5px; color: #999; font-size: 13px;">...</span>
+            {% endif %}
+        {% endfor %}
+
+        <!-- Next -->
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if category %}&category={{ category }}{% endif %}{% if is_edible %}&is_edible={{ is_edible }}{% endif %}{% if selected_country %}&country={{ selected_country }}{% endif %}" 
+               style="padding: 8px 16px; background: white; color: #282828; text-decoration: none; border-radius: 5px; font-size: 13px; border: 1px solid #ddd; font-weight: 500;">
+                Next
+            </a>
+        {% else %}
+            <span style="padding: 8px 16px; background: #f0f0f0; color: #ccc; border-radius: 5px; font-size: 13px; font-weight: 500;">
+                Next
+            </span>
+        {% endif %}
+
+    </div>
+</div>
+{% endif %}
 
 {% endblock %}

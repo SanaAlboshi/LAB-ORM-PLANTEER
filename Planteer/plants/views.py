@@ -5,9 +5,8 @@ from .forms import PlantForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
-
+from django.core.paginator import Paginator
 from .forms import ReviewForm
-
 
 
 
@@ -15,6 +14,14 @@ def plants_list(request):
     category = request.GET.get('category')
     is_edible = request.GET.get('is_edible')
     country_id = request.GET.get('country')
+    
+    # تنظيف القيم - تحويل 'None' string إلى None
+    if category == 'None' or category == '':
+        category = None
+    if is_edible == 'None' or is_edible == '':
+        is_edible = None
+    if country_id == 'None' or country_id == '':
+        country_id = None
 
     plants = Plant.objects.filter(is_published=True)
 
@@ -25,10 +32,15 @@ def plants_list(request):
     if country_id:
         plants = plants.filter(countries__id=country_id)
 
+    # إضافة Pagination
+    paginator = Paginator(plants, 6)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     countries = Country.objects.all()
 
     context = {
-        'plants': plants,
+        'page_obj': page_obj,
         'categories': CATEGORY_CHOICES,
         'category': category,
         'is_edible': is_edible,
@@ -36,7 +48,6 @@ def plants_list(request):
         'selected_country': country_id,
     }
     return render(request, 'plants/plants_list.html', context)
-
 
 def plant_detail(request, pk):
     plant = get_object_or_404(Plant, pk=pk)
