@@ -53,6 +53,7 @@ body {
     text-transform: uppercase;
 }
 
+
 /* =========================
    الهيدر والقائمة - مع Active Link
 ========================= */
@@ -520,22 +521,6 @@ body {
     margin: 30px auto 0;
 }
 
-.plant-content {
-    display: flex;
-    gap: 25px;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    flex-direction: row-reverse;
-}
-
-.plant-text {
-    flex: 1;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-top: 50px;
-}
 
 .plant-text h1 {
     font-size: 28px;
@@ -544,14 +529,32 @@ body {
     text-transform: uppercase;
 }
 
+.plant-content {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex-direction: row; /* الصورة على اليسار والنص على اليمين */
+}
+
+.plant-text {
+    flex: 1;
+    text-align: left; /* ⬅ النصوص على اليمين */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 50px;
+}
+
 .tags {
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    text-align: right;
+    text-align: left;
 }
+
+
 
 .tags span {
     background: #f0f4f0;
@@ -1264,19 +1267,20 @@ body {
     margin-bottom: 80px; 
 }
 
-
+ /*countries*/
 .plant-countries {
     text-align: left !important;
     margin-bottom: 20px;
     margin-left: 50px; /* يكبر المسافة حسب رغبتك */
     margin-top: 100px;
+    color: #535353;
 }
 
 .countries-title {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
-    margin-bottom: 8px;
-     margin-top: 50px;
+    margin-bottom:8px;
+     margin-top: 60px;
 
 }
 
@@ -1291,7 +1295,7 @@ body {
 }
 
 .countries-list a {
-    color: #2c5e39;
+    color: #425a48;
     text-decoration: none;
     font-weight: 600;
 }
@@ -1301,14 +1305,6 @@ body {
 }
 
 
-.back-btn {
-    display: block;
-    text-align: left !important;
-    margin-left: 10px;
-    margin-top: 20px;
-    font-size: 16px;
-    color: #2d2d2d;
-}
 
 
 .country-plants-container {
@@ -1476,5 +1472,19 @@ body {
     display: inline-flex;
     align-items: center;
 }
+
+
+
+h1 {
+    font-size: 30px !important;
+    color: #6d6d6d !important;
+    margin-top: 50px !important; /* المسافة الإلزامية من الأعلى */
+}
+
+
+
+
+
+
 
 

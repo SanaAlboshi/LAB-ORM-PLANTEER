@@ -4,7 +4,7 @@
 {% block content %}
 
 <div class="plant-countries" dir="ltr">
-    <p class="countries-title"><strong>Native Countries:</strong></p>
+    <p class="countries-title"><strong>Native Countries</strong></p>
     <ul class="countries-list">
         {% for country in plant.countries.all %}
             <li>
@@ -14,8 +14,6 @@
     </ul>
 </div>
 
-<!-- Back button -->
-<a href="{% url 'plants_list' %}" class="back-btn">← Back</a>
 
 <!-- Average Rating خارج الـ plant-box ويظهر فقط إذا هناك تقييمات -->
 {% if stats.total_reviews > 0 %}
